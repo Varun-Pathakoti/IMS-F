@@ -50,7 +50,7 @@ export class LoginComponent {
       password: this.password
     };
 
-    this.http.post('https://localhost:44371/api/Account/login', user).subscribe(
+    this.http.post('https://localhost:7170/api/Account/login', user).subscribe(
       response => {
         alert('Login successful');
         localStorage.setItem('currentUser', JSON.stringify(response));

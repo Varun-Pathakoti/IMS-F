@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,7 @@ export class RegisterComponent {
   password: string = '';
   errorMessage: string = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private router: Router) {}
 
   onSubmit() {
     const user = {
@@ -23,9 +24,11 @@ export class RegisterComponent {
       password: this.password
     };
 
-    this.http.post('https://localhost:44371/api/Account/register', user)
+    this.http.post('https://localhost:7170/api/Account/register', user)
       .subscribe(
         response => {
+          
+          this.router.navigate(['/']);
           alert('Registration successful');
           // Handle successful registration here, e.g., navigate to login page
         },
