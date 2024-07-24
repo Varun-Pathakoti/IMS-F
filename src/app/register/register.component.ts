@@ -14,7 +14,8 @@ export class RegisterComponent {
   password: string = '';
   errorMessage: string = '';
 
-  constructor(private http: HttpClient,private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {}
+
 
   onSubmit() {
     const user = {
@@ -30,7 +31,7 @@ export class RegisterComponent {
           
           this.router.navigate(['/']);
           alert('Registration successful');
-          // Handle successful registration here, e.g., navigate to login page
+          this.router.navigate(['/']); // Navigate to the login page after successful registration
         },
         (error: HttpErrorResponse) => {
           alert('Registration failed');
