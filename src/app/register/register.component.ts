@@ -16,6 +16,7 @@ export class RegisterComponent {
 
   constructor(private http: HttpClient, private router: Router) {}
 
+
   onSubmit() {
     const user = {
       fullName: this.fullName,
@@ -24,9 +25,11 @@ export class RegisterComponent {
       password: this.password
     };
 
-    this.http.post('https://localhost:44371/api/Account/register', user)
+    this.http.post('https://localhost:7170/api/Account/register', user)
       .subscribe(
         response => {
+          
+          this.router.navigate(['/']);
           alert('Registration successful');
           this.router.navigate(['/']); // Navigate to the login page after successful registration
         },
